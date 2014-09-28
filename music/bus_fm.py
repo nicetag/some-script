@@ -1,21 +1,25 @@
-# version : 0.2
+# version : 0.3
+
 import urllib.request
 
 from bs4 import BeautifulSoup
 
+vol = input("Enter the vol number : ")
+musicurl = "http://luoo.800edu.net/low/luoo/radio"
+imgurl = "http://www.luoo.net/music/"
+page = urllib.request.urlopen(imgurl + vol)
+soup = BeautifulSoup(page)
+num = len(soup.select('li[id^="track"]'))
 
-def bus_fm():
-    vol, num = input("Enter the vol and num: ").split()
-    musicurl = "http://luoo.800edu.net/low/luoo/radio"
-    imgurl = "http://www.luoo.net/music/"
+
+def downloadMusic():
     for i in range(1, 10):
         print(musicurl + vol + "/" + "0" + str(i) + ".mp3")
-        str((musicurl + vol + "/" + "0" + str(i) + ".mp3"))
     for n in range(10, int(num) + 1):
-        print(musicurl + str(vol) + "/" + str(n) + ".mp3")
-    page = urllib.request.urlopen(imgurl + vol)
-    soup = BeautifulSoup(page)
+        print(musicurl + vol + "/" + str(n) + ".mp3")
 
+
+def downloadImg():
     u = str((soup.find_all("img", "vol-cover")))
     print(u[u.find("src") + 5:u.find(">") - 1])
     print()
@@ -23,7 +27,8 @@ def bus_fm():
 
 
 def test():
-    bus_fm()
+    downloadMusic()
+    downloadImg()
 
 
 if __name__ == "__main__":
