@@ -1,7 +1,7 @@
 SomeScript
 ==========
 
-some little script.
+Some little script.
 
 **Change Log**
 
