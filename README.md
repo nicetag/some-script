@@ -5,17 +5,22 @@ some little script.
 
 **Change Log**
 
-bus_fm:
+bus_fm 0.3
 
-0.2 
+- 加入了自动解析音乐数目的功能
+
+bus_fm 0.2 
 
 - 加入了下载图片的功能
+ 
 - bug fix
 
-0.1 
+bus_fm 0.1 
+
 - first version 
 
-yayaxz:
+----------
 
-0.1
+yayaxz 0.1
+
 - first version
