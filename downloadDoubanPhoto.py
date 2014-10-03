@@ -1,18 +1,38 @@
 __author__ = 'John_PC'
 
-# python version:3.41
-
-import urllib.request
+import urllib
 
 from bs4 import BeautifulSoup
 
-page = urllib.request.urlopen("http://www.douban.com/photos/album/71244874/")
-soup = BeautifulSoup(page)
+downloadUrl = raw_input("Please input url: ")
+downloadUrl = downloadUrl + "?start=0"
 
-a = (soup.select("div > a > img"))
 
-begin = str(a[1]).find("public") + 7
-end = str(a[1]).find(".jpg")
+def downloadPhoto(url):
+    page = urllib.urlopen(url)
 
-for i in range(1, len(a)):
-    print(str(a[i]).replace("thumb", "photo")[10:-3])
+    soup = BeautifulSoup(page)
+    a = soup.select("div > a > img")
+    p = soup.select('a[href*="?start="]')
+    for i in range(1, len(a)):
+        print(str(a[i]).replace("thumb", "photo")[10:-3])
+        url = url + "18"
+
+
+def pagesNumber(u):
+    page = urllib.urlopen(u)
+
+    soup = BeautifulSoup(page)
+    a = soup.select("div > a > img")
+    p = soup.select('a[href*="?start="]')
+    o = -18
+    b = []
+
+    for i in range(0, len(p)):
+        o = o + 18
+        b.append(u + str(o))
+    return b
+
+
+map(downloadPhoto, pagesNumber(downloadUrl))
+
