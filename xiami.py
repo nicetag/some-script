@@ -4,3 +4,5 @@ def parserXiami():
     pass
 def downloadXiami():
     pass
+def test():
+    pass
